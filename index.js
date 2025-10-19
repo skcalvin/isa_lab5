@@ -34,7 +34,7 @@ document.getElementById('insert_sample').addEventListener('click', async () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ sql })
+            body: JSON.stringify({ query: sql })
         });
 
         data = await res.json();
