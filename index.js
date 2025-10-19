@@ -1,12 +1,12 @@
-const API_BASE = '';
+const API_BASE = 'https://comp4537-lab5-14co.onrender.com/lab5/api/v1/sql';
 const response = document.getElementById('response');
 
 
 
 // Function to load strings
 async function loadStrings() {
-    const data = await fetch('en.json');
-    const strings = await data.json();
+    const stringData = await fetch('en.json');
+    const strings = await stringData.json();
     document.title = strings.index.title;
     document.getElementById('index_heading').innerText = strings.index.heading;
     document.getElementById('insert_sample').innerText = strings.index.sampleButton;
@@ -17,7 +17,8 @@ async function loadStrings() {
 
 // Function to insert sample data
 document.getElementById('insert_sample').addEventListener('click', async () => {
-    
+    let data;
+
     const sql = `
         INSERT into patient (name, dateOfBirth)
         VALUES
@@ -36,7 +37,7 @@ document.getElementById('insert_sample').addEventListener('click', async () => {
             body: JSON.stringify({ sql })
         });
 
-        const data = await res.json();
+        data = await res.json();
         response.textContent = JSON.stringify(data, null, 2);
     } catch {
         response.textContent = data.message;
