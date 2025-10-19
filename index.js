@@ -70,7 +70,7 @@ document.getElementById('send_query').addEventListener('click', async () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ sql })
+                body: JSON.stringify({ query: sql })
             });
         } else {
             response.textContent = strings.index.invalidQuery;
