@@ -39,8 +39,8 @@ document.getElementById('insert_sample').addEventListener('click', async () => {
 
         data = await res.json();
         response.textContent = JSON.stringify(data, null, 2);
-    } catch {
-        response.textContent = data.message;
+    } catch (err) {
+        response.textContent = JSON.stringify(err.message, null, 2);
     }
 });
 
@@ -63,7 +63,7 @@ document.getElementById('send_query').addEventListener('click', async () => {
 
         if (lower.startsWith('select')) {
             const encodedSQL = encodeURIComponent(sql);
-            res = await fetch(`${API_BASE}/${encodedSQL}`, { method: "GET" });
+            res = await fetch(`${API_BASE}?query=${encodedSQL}`, { method: "GET" });
         } else if (lower.startsWith('insert')) {
             res = await fetch(API_BASE, {
                 method: "POST",
@@ -80,7 +80,7 @@ document.getElementById('send_query').addEventListener('click', async () => {
         data = await res.json();
         response.textContent = JSON.stringify(data, null, 2);
     } catch (err){
-        response.textContent = err.message;
+        response.textContent = JSON.stringify(err.message, null, 2);
     }
 });
 
