@@ -1,0 +1,12 @@
+{
+    "index": {
+        "title": "Lab 5",
+        "heading": "Lab 5 DB Intro",
+        "sampleButton": "Insert Sample Data",
+        "queryAreaPlaceholder": "INSERT and SELECT statements only",
+        "sendQueryButton": "Send Query",
+        "serverResponseHeading": "Server Response",
+        "missingQuery": "Please enter a query",
+        "invalidQuery": "Only INSERT and SELECT statements are allowed"
+    }
+}
